@@ -1,0 +1,55 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:15
+    container_name: db
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=authdb
+    volumes:
+      - db_data:/var/lib/postgresql/data
+  auth:
+    build:
+      context: ./services/auth
+    container_name: auth
+    depends_on:
+      - db
+    environment:
+      - AUTH_PORT=8081
+      - DB_DSN=postgres://postgres:postgres@db:5432/authdb?sslmode=disable
+      - JWT_SECRET=mysecret
+  gateway:
+    build:
+      context: ./services/gateway
+    container_name: gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - redis
+      - functionservice
+    environment:
+      - GATEWAY_PORT=8080
+      - RATE_LIMIT_ALGO=sliding-window
+      - JWT_SECRET=mysecret
+      - AUTH_SERVICE_URL=http://auth:8081
+      - FUNCTION_SERVICE_URL=http://functionservice:8082
+  redis:
+    image: redis:7
+    container_name: redis
+    ports:
+      - "6379:6379"
+  functionservice:
+    build:
+      context: ./services/functions
+    container_name: functionservice
+    depends_on:
+      - db
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - FUNCTION_DB_DSN=postgres://postgres:postgres@db:5432/authdb?sslmode=disable
+
+volumes:
+  db_data:

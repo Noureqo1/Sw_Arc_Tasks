@@ -1,0 +1,50 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Environment variables
+.env
+.env.*
+
+# Database files
+*.sqlite
+*.sqlite3
+*.db
+*.sql
+
+# Database connection files
+config/db.js
+
+# Temporary files
+tmp/
+temp/
+
+# Build output
+dist/
+build/
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# nyc test coverage
+.nyc_output/
