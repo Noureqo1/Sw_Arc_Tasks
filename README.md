@@ -12,17 +12,17 @@ This task implements a circuit breaker pattern with retry mechanism and exponent
 
 ## API Endpoints
 
-### GET /api/request` - Test endpoint that simulates external service calls
-- `successful request
+### GET /api/request - Test endpoint that simulates external service calls
+- successful request
 ![api-request](tests/task4/Screenshot%202025-03-28%20143613.png)
-- `failed request
+- failed request
 ![api-request](tests/task4/Screenshot%202025-03-28%20143911.png)
 
-### GET /api/state` - Get current circuit breaker state
+### GET /api/state - Get current circuit breaker state
 
-- `open state
-![api-state](tests/task4/Screenshot%202025-03-28%20143630.png)
-- `closed state
+- open state
+![api-state](tests/task4/Screenshot%202025-03-28%20143930.png)
+- closed state
 ![api-state](tests/task4/Screenshot%202025-03-28%20143802.png)
 
 ### Testing Scenarios
