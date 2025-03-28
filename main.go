@@ -72,7 +72,7 @@ func main() {
 	http.HandleFunc("/api/request", handleRequest)
 	http.HandleFunc("/api/state", getCircuitState)
 
-	port := ":8080"
+	port := ":8082"
 	fmt.Printf("Server starting on port %s...\n", port)
 	log.Fatal(http.ListenAndServe(port, nil))
 }
