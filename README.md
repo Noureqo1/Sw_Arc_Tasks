@@ -20,9 +20,9 @@ This task implements a circuit breaker pattern with retry mechanism and exponent
 
 ### GET /api/state - Get current circuit breaker state
 
-- open state
-![api-state](tests/task4/Screenshot%202025-03-28%20143930.png)
 - closed state
+![api-state](tests/task4/Screenshot%202025-03-28%20143930.png)
+- open state
 ![api-state](tests/task4/Screenshot%202025-03-28%20143802.png)
 
 ### Testing Scenarios
